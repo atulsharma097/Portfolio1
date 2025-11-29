@@ -126,7 +126,7 @@ const App = () => {
                 handle="atulsharma"
                 status="Online"
                 contactText="Contact Me"
-                avatarUrl="/src/assets/Untitled design (3).png"
+                avatarUrl="/src/assets/Untitled-design-3.png"
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
