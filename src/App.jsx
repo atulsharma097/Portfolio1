@@ -9,7 +9,7 @@ import LogoLoop from './components/LogoLoop';
 import { SiReact, SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiNodedotjs } from "react-icons/si";
 import ProjectSection from "./components/ProjectSection";
 import Card from './components/Card';
-import SkillScale from './components/skillscale';
+import SkillScale from './components/skillScale';
 import Button from './components/Button';
 import AboutSection from './components/AboutSection';
 
