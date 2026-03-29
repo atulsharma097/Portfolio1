@@ -1,5 +1,6 @@
 // App.jsx
 import React from 'react';
+import { motion } from "framer-motion";
 import './index.css';
 import LightRays from './components/LightRays';
 import PillNav from './components/PillNav';
@@ -75,7 +76,7 @@ const App = () => {
             ease="power2.easeOut"
             baseColor="#ffffff"
             pillColor="#060010"
-            hoveredPillTextColor="#ffffff"
+            hoveredPillTextColor="#000000"
             pillTextColor="white"
           />
         </div>
@@ -84,8 +85,22 @@ const App = () => {
         <div className="container mx-auto px-10 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center min-h-[500px]">
             {/* Left Side - Animated Text */}
-            <div className="flex flex-col justify-center space-y-8">
-              <div style={{ minHeight: '4rem', display: 'flex', alignItems: 'center' }}>
+            <motion.div 
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.2 }
+                }
+              }}
+              className="flex flex-col justify-center space-y-8"
+            >
+              <motion.div 
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+                style={{ minHeight: '4rem', display: 'flex', alignItems: 'center' }}
+              >
                 <DecryptedText
                   text="WEB DEVELOPER"
                   speed={100}
@@ -96,9 +111,12 @@ const App = () => {
                   parentClassName="inline-block"
                   encryptedClassName="text-gray-600"
                 />
-              </div>
+              </motion.div>
 
-              <div style={{ minHeight: '6rem', display: 'flex', alignItems: 'center' }}>
+              <motion.div 
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+                style={{ minHeight: '6rem', display: 'flex', alignItems: 'center' }}
+              >
                 <DecryptedText
                   text="ATUL SHARMA"
                   animateOn="view"
@@ -109,24 +127,32 @@ const App = () => {
                   parentClassName="inline-block"
                   encryptedClassName="text-gray-700"
                 />
-              </div>
+              </motion.div>
 
-              <div className="pt-4">
+              <motion.div 
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+                className="pt-4"
+              >
                 <p className="text-xl text-gray-400 leading-relaxed max-w-lg">
                   Crafting beautiful and functional web experiences with modern technologies.
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Right Side - Profile Card */}
-            <div className="flex justify-center lg:justify-end">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
+              animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex justify-center lg:justify-end"
+            >
               <ProfileCard
                 name="Atul Sharma"
                 title="Web Developer"
                 handle="atulsharma"
                 status="Online"
                 contactText="Contact Me"
-                avatarUrl="/src/assets/Untitled-design-3.png"
+                avatarUrl="/src/assets/profile-pic.jpg"
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
@@ -136,7 +162,7 @@ const App = () => {
                   });
                 }}
               />
-            </div>
+            </motion.div>
           </div>
         </div>
         <div style={{ height: '200px', position: 'relative', overflow: 'hidden', }}>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function EducationSection() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -67,7 +68,19 @@ export default function EducationSection() {
         <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-500" />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.3 }
+          }
+        }}
+        className="max-w-6xl mx-auto relative z-10"
+      >
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
@@ -91,8 +104,12 @@ export default function EducationSection() {
           {/* Education cards */}
           <div className="space-y-12">
             {education.map((edu, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={{
+                  hidden: { opacity: 0, x: index % 2 === 0 ? -50 : 50 },
+                  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } }
+                }}
                 className={`relative ${
                   index % 2 === 0 ? "md:ml-0" : "md:ml-auto"
                 } md:w-[calc(50%-3rem)] w-full pl-20 md:pl-0`}
@@ -215,7 +232,7 @@ export default function EducationSection() {
                     }`}
                   />
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -229,7 +246,7 @@ export default function EducationSection() {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

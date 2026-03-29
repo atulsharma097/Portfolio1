@@ -1,5 +1,6 @@
 // import { image } from "framer-motion/client";
 import React from "react";
+import { motion } from "framer-motion";
 import ecom from "../assets/e-com.jpg";
 import weather from "../assets/weatherapp.jpg";
 // import { image } from "framer-motion/client";
@@ -63,18 +64,36 @@ const ProjectSection = () => {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.15 }
+          }
+        }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+      >
         {projects.map((p, index) => (
-          <div
+          <motion.div
             key={index}
-            className="rounded-3xl border border-cyan-800/40 bg-black/40 p-6 backdrop-blur-xl transition-all hover:border-cyan-400/60 hover:shadow-[0_0_20px_#00ffff50]"
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+            }}
+            whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.2, ease: "easeOut" } }}
+            className="group rounded-3xl border border-cyan-800/40 bg-black/40 p-6 backdrop-blur-xl transition-[border-color,box-shadow] duration-200 ease-out hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(0,255,255,0.3)] relative overflow-hidden"
           >
             {/* Image */}
-            <div className="w-full h-40 overflow-hidden rounded-xl mb-4">
+            <div className="w-full h-40 overflow-hidden rounded-xl mb-4 relative z-10">
+              <div className="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/20 transition-colors duration-300 ease-out z-10 rounded-xl" />
               <img
                 src={p.image}
                 alt={p.title}
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-110"
               />
 
             </div>
@@ -85,14 +104,14 @@ const ProjectSection = () => {
               href={p.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-5 py-2 text-sm font-semibold bg-cyan-500 hover:bg-cyan-400 text-black rounded-full"
+              className="inline-block px-5 py-2 text-sm font-semibold bg-cyan-500 hover:bg-cyan-400 text-black rounded-full transition-colors duration-200"
             >
               View Demo
             </a>
 
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { useInView } from 'framer-motion';
 
 const SkillScale = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <StyledWrapper>
+    <StyledWrapper ref={ref} className={isInView ? 'in-view' : ''}>
 
       {/* ⭐ SECTION HEADING ⭐ */}
       <div className="section-heading">
@@ -17,7 +21,7 @@ const SkillScale = () => {
           <span className="title">JavaScript</span>
           <div className="skill-bar">
             <span className="skill-per javascript">
-              <span className="tooltip">80</span>
+              <span className="tooltip">80%</span>
             </span>
           </div>
         </div>
@@ -26,7 +30,7 @@ const SkillScale = () => {
           <span className="title">HTML</span>
           <div className="skill-bar">
             <span className="skill-per html">
-              <span className="tooltip">90</span>
+              <span className="tooltip">90%</span>
             </span>
           </div>
         </div>
@@ -35,7 +39,7 @@ const SkillScale = () => {
           <span className="title">CSS</span>
           <div className="skill-bar">
             <span className="skill-per css">
-              <span className="tooltip">90</span>
+              <span className="tooltip">90%</span>
             </span>
           </div>
         </div>
@@ -44,7 +48,7 @@ const SkillScale = () => {
           <span className="title">React</span>
           <div className="skill-bar">
             <span className="skill-per react">
-              <span className="tooltip">70</span>
+              <span className="tooltip">70%</span>
             </span>
           </div>
         </div>
@@ -53,7 +57,7 @@ const SkillScale = () => {
           <span className="title">Node.js</span>
           <div className="skill-bar">
             <span className="skill-per nodejs">
-              <span className="tooltip">60</span>
+              <span className="tooltip">60%</span>
             </span>
           </div>
         </div>
@@ -62,7 +66,7 @@ const SkillScale = () => {
           <span className="title">TailwindCSS</span>
           <div className="skill-bar">
             <span className="skill-per tailwindcss">
-              <span className="tooltip">70</span>
+              <span className="tooltip">70%</span>
             </span>
           </div>
         </div>
@@ -71,7 +75,7 @@ const SkillScale = () => {
           <span className="title">MongoDB</span>
           <div className="skill-bar">
             <span className="skill-per mongodb">
-              <span className="tooltip">60</span>
+              <span className="tooltip">60%</span>
             </span>
           </div>
         </div>
@@ -80,7 +84,7 @@ const SkillScale = () => {
           <span className="title">Postman</span>
           <div className="skill-bar">
             <span className="skill-per postmen">
-              <span className="tooltip">70</span>
+              <span className="tooltip">70%</span>
             </span>
           </div>
         </div>
@@ -161,8 +165,11 @@ const StyledWrapper = styled.div`
       #00ffff
     );
     box-shadow: 0 0 10px #00ffff;
-    animation: grow 2s ease-out forwards;
     width: 0;
+  }
+
+  &.in-view .skill-bar .skill-per {
+    animation: grow 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   /* 🎯 Correct Target Widths for ALL Skills */

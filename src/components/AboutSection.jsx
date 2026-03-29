@@ -1,19 +1,41 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const AboutSection = () => {
   return (
-    <div className="w-full py-20 px-6 text-center">
+    <motion.div 
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: { staggerChildren: 0.2 }
+        }
+      }}
+      className="w-full py-20 px-6 text-center"
+    >
       
       {/* Heading */}
-      <h2 className="text-5xl font-extrabold text-cyan-400 tracking-wide mb-4">
+      <motion.h2 
+        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+        className="text-5xl font-extrabold text-cyan-400 tracking-wide mb-4"
+      >
         ABOUT ME
-      </h2>
-      <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+      </motion.h2>
+      <motion.p 
+        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
+        className="text-gray-300 text-lg max-w-3xl mx-auto"
+      >
         Get to know who I am and what I do
-      </p>
+      </motion.p>
 
       {/* Card */}
-      <div className="max-w-4xl mx-auto mt-10 bg-black/40 backdrop-blur-xl border border-cyan-800/40 rounded-3xl p-10 shadow-[0_0_20px_#00ffff40]">
+      <motion.div 
+        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+        className="max-w-4xl mx-auto mt-10 bg-black/40 backdrop-blur-xl border border-cyan-800/40 rounded-3xl p-10 shadow-[0_0_20px_#00ffff40]"
+      >
 
         <p className="text-gray-300 leading-8 text-lg">
           Hello! I’m <span className="text-cyan-400 font-semibold">Atul Sharma</span>, 
@@ -40,8 +62,8 @@ const AboutSection = () => {
           where I can collaborate, learn and build amazing digital experiences.
         </p>
 
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
