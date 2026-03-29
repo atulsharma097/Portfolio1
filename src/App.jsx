@@ -1,7 +1,8 @@
-// App.jsx
 import React from 'react';
 import { motion } from "framer-motion";
 import './index.css';
+import profilePic from './assets/profile-pic.jpg';
+import reactLogo from './assets/react.svg';
 import LightRays from './components/LightRays';
 import PillNav from './components/PillNav';
 import ProfileCard from './components/ProfileCard';
@@ -62,7 +63,7 @@ const App = () => {
         {/* 🔝 Navigation */}
         <div className="w-full py-6">
           <PillNav
-            logo="../src/assets/react.svg"
+            logo={reactLogo}
             items={[
               { label: 'Home', href: '#' },
               { label: 'About', href: '#about' },
@@ -152,7 +153,7 @@ const App = () => {
                 handle="atulsharma"
                 status="Online"
                 contactText="Contact Me"
-                avatarUrl="/src/assets/profile-pic.jpg"
+                avatarUrl={profilePic}
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
