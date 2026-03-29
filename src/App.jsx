@@ -108,7 +108,7 @@ const App = () => {
                   maxIterations={20}
                   characters="ABCD1234!?"
                   animateOn="view"
-                  className="text-5xl font-bold text-cyan-400 tracking-wider leading-none"
+                  className="text-4xl md:text-5xl font-bold text-cyan-400 tracking-wider leading-none"
                   parentClassName="inline-block"
                   encryptedClassName="text-gray-600"
                 />
@@ -124,7 +124,7 @@ const App = () => {
                   revealDirection="center"
                   speed={80}
                   sequential={true}
-                  className="text-7xl font-black text-white tracking-tight leading-none"
+                  className="text-5xl md:text-7xl font-black text-white tracking-tight leading-none"
                   parentClassName="inline-block"
                   encryptedClassName="text-gray-700"
                 />
@@ -134,7 +134,7 @@ const App = () => {
                 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } }}
                 className="pt-4"
               >
-                <p className="text-xl text-gray-400 leading-relaxed max-w-lg">
+                <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-lg">
                   Crafting beautiful and functional web experiences with modern technologies.
                 </p>
               </motion.div>
